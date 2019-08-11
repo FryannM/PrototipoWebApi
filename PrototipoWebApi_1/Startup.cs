@@ -9,6 +9,7 @@ using PrototipoWebApi_1.Interfaces;
 using PrototipoWebApi_1.Profilles;
 using PrototipoWebApi_1.Repositorios;
 using PrototipoWebApi_1.Services;
+using Microsoft.AspNet.OData.Extensions;
 
 namespace PrototipoWebApi_1
 {
@@ -28,14 +29,18 @@ namespace PrototipoWebApi_1
             services.AddDbContext<RepositoryBase>(option => option.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
             services.AddTransient<IDepartamentoServices, DepartamentoServices>();
             services.AddTransient<IColaboradoreServices, ColaboradorServices>();
+            services.AddOData();
 
 
+            
             var config = new AutoMapper.MapperConfiguration(cfg => {
                 cfg.AddProfile(new ColaboradorProfile());
              });
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +57,15 @@ namespace PrototipoWebApi_1
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+
+            app.UseMvc(FryannBuilder =>
+           {
+               FryannBuilder.EnableDependencyInjection();
+               FryannBuilder.Expand().Filter().Select().MaxTop(200);
+           });
+
+
         }
     }
 }

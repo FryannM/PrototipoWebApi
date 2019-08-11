@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +31,7 @@ namespace PrototipoWebApi_1.Controllers
         }
 
         // GET: api/Colaboradors
-
+        [EnableQuery]
         [Route("GetColaboradores")]
         [HttpGet]
         public IEnumerable<Colaborador> GetColaboradors()
