@@ -21,6 +21,7 @@ namespace PrototipoWebApi_1.Controllers
         }
 
         // GET: api/    
+        [Route("clientes")]
         [HttpGet]
         public IEnumerable<Cliente> GetClientes()
         {

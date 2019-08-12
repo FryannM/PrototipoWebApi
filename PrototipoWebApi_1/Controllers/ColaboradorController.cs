@@ -15,7 +15,7 @@ using PrototipoWebApi_1.Repositorios;
 
 namespace PrototipoWebApi_1.Controllers
 {
-    [Produces("application/json", "application/xml")]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ColaboradorController : ControllerBase
@@ -33,10 +33,10 @@ namespace PrototipoWebApi_1.Controllers
         }
 
         // GET: api/Colaboradors
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Colaborador))]
-        [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(Colaborador))]
-        [EnableQuery]
-        [Route("GetColaboradores")]
+        //[ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Colaborador))]
+        //[ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(Colaborador))]
+      //  [EnableQuery]
+        [Route("colaborador")]
         [HttpGet]
         public IEnumerable<Colaborador> GetColaboradors()
         {

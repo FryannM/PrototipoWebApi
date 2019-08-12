@@ -38,6 +38,14 @@ namespace PrototipoWebApi_1
                 swagger.SwaggerDoc("v1", new Info { Title = "Prototipo Ing Soft 2" });
             });
 
+
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new ColaboradorProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
             //services.AddOData();
         }
 
@@ -85,17 +93,14 @@ namespace PrototipoWebApi_1
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseHttpsRedirection();
+
             app.UseMvc();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         //public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         //{
 
-        //    if (env.IsDevelopment())
-
-
-        //    {
-        //        app.UseDeveloperExceptionPage();
         //        app.UseSwagger();
         //        app.UseSwaggerUI(c =>
         //        {
@@ -103,6 +108,12 @@ namespace PrototipoWebApi_1
         //            c.RoutePrefix = string.Empty;
 
         //        });
+
+        //    if (env.IsDevelopment())
+        //    {
+
+        //        app.UseDeveloperExceptionPage();
+
         //    }
         //    else
         //    {
@@ -110,11 +121,11 @@ namespace PrototipoWebApi_1
         //    }
 
         //    // Agregando OData en el Application Builder
-        //    app.UseMvc(FryannBuilder =>
-        //   {
-        //       FryannBuilder.EnableDependencyInjection();
-        //       FryannBuilder.Expand().Filter().Select().MaxTop(200);
-        //   });
+        //   // app.UseMvc(FryannBuilder =>
+        //   //{
+        //   //    FryannBuilder.EnableDependencyInjection();
+        //   //    FryannBuilder.Expand().Filter().Select().MaxTop(200);
+        //   //});
         //    // Enable middleware to serve generated Swagger as a JSON endpoint.
 
         //    // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
@@ -126,6 +137,6 @@ namespace PrototipoWebApi_1
 
 
 
-        //}
-    }
+            //}
+        }
 }
