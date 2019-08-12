@@ -41,10 +41,8 @@ namespace PrototipoWebApi_1.Controllers
         public IEnumerable<Colaborador> GetColaboradors()
         {
             
-           var result = _colaboradoreServices.GetColaboradors();
-            var model = _mapper.Map<IEnumerable<Colaborador>>(result);
-
-            return model;
+           var colaboradores = _colaboradoreServices.GetColaboradors();
+           return colaboradores;
         }
 
        

@@ -1,4 +1,5 @@
-﻿using PrototipoWebApi_1.Interfaces;
+﻿using AutoMapper;
+using PrototipoWebApi_1.Interfaces;
 using PrototipoWebApi_1.Modelos;
 using PrototipoWebApi_1.Repositorios;
 using System;
@@ -11,16 +12,19 @@ namespace PrototipoWebApi_1.Services
     public class ColaboradorServices : IColaboradoreServices
     {
         private readonly RepositoryBase _colaboradorServices;
+        private readonly IMapper _mapper;
 
-
-        public ColaboradorServices( RepositoryBase colaboradorServices)
+        public ColaboradorServices( RepositoryBase colaboradorServices, IMapper mapper)
         {
             _colaboradorServices = colaboradorServices;
+            _mapper = mapper;
         }
         public IEnumerable<Colaborador> GetColaboradors()
         {
             var colaboradores = _colaboradorServices.Colaboradors;
-            return colaboradores;
+
+           var modelo = _mapper.Map<IEnumerable<Colaborador>> (colaboradores);
+             return modelo;
             
         }
 
