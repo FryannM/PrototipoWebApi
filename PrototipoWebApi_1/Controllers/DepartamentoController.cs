@@ -11,12 +11,12 @@ namespace PrototipoWebApi_1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DeparatamentoController : ControllerBase
+    public class DepartamentoController : ControllerBase
     {
       
 
         private readonly IDepartamentoServices _departamentoServices;
-        public DeparatamentoController( IDepartamentoServices  departamentoServices)
+        public DepartamentoController( IDepartamentoServices  departamentoServices)
         {
             _departamentoServices = departamentoServices;
 

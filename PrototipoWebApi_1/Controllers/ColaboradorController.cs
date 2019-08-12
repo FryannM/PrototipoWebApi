@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNet.OData;
@@ -14,6 +15,7 @@ using PrototipoWebApi_1.Repositorios;
 
 namespace PrototipoWebApi_1.Controllers
 {
+    [Produces("application/json", "application/xml")]
     [Route("api/[controller]")]
     [ApiController]
     public class ColaboradorController : ControllerBase
@@ -31,6 +33,8 @@ namespace PrototipoWebApi_1.Controllers
         }
 
         // GET: api/Colaboradors
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Colaborador))]
+        [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(Colaborador))]
         [EnableQuery]
         [Route("GetColaboradores")]
         [HttpGet]
