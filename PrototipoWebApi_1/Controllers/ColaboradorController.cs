@@ -44,9 +44,6 @@ namespace PrototipoWebApi_1.Controllers
            var colaboradores = _colaboradoreServices.GetColaboradors();
            return colaboradores;
         }
-
-       
-
         // GET: api/Colaboradors/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetColaborador([FromRoute] int id)

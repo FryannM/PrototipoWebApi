@@ -20,7 +20,8 @@ namespace PrototipoWebApi_1.Repositorios
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<Proyecto> Proyectos { get; set; }
         public DbSet<Team> Team { get; set; }
-        public DbSet<Materias> Materias { get; set; }
+        public DbSet<TeamColaborator> TeamColaborators { get; set; }
+       
         
        
 

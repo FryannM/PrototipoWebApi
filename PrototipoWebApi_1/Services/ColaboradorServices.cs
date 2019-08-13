@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PrototipoWebApi_1.Dtos;
 using PrototipoWebApi_1.Interfaces;
 using PrototipoWebApi_1.Modelos;
 using PrototipoWebApi_1.Repositorios;
@@ -31,8 +32,9 @@ namespace PrototipoWebApi_1.Services
         public async Task<Colaborador> GetColaboradorAsyncbyId(int id)
         {
             var colaborador = await _colaboradorServices.Colaboradors.FindAsync(id);
+            //var model = _mapper.Map<ColaboradorDto>(colaborador);
+
             return colaborador;
-                
         }
 
         public async Task<Colaborador> SaveColaborator(Colaborador colaborador)

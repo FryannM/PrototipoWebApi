@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PrototipoWebApi_1.Repositorios;
 
 namespace PrototipoWebApi_1.Migrations
 {
     [DbContext(typeof(RepositoryBase))]
-    partial class RepositoryBaseModelSnapshot : ModelSnapshot
+    [Migration("20190812014255_AgregandoEntidades")]
+    partial class AgregandoEntidades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,7 +171,7 @@ namespace PrototipoWebApi_1.Migrations
             modelBuilder.Entity("PrototipoWebApi_1.Modelos.Colaborador", b =>
                 {
                     b.HasOne("PrototipoWebApi_1.Modelos.TeamColaborator")
-                        .WithMany("Colaboradors")
+                        .WithMany("colaboradors")
                         .HasForeignKey("TeamColaboratorId");
                 });
 
